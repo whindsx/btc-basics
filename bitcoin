@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+#
+# Description: Brings the bitcoin daemon up and down at boot 
+# Default-Start:    Defaults 
+# Default-Stop:     Defaults
+
+HOME=/
+
+case "$1" in
+'start') 
+
+   [ -f /usr/local/bin/bitcoind ] &&
+            /usr/local/bin/bitcoind -daemon 
+   ;;
+
+'stop') 
+            /usr/local/bin/bitcoin-cli stop
+   ;;
+
+'restart') echo "Restarting bitcoind....."
+   [ -f /bin/kill ] && /bin/kill -HUP `pidof bitcoind`
+   ;;
+*)
+
+   echo "Usage: $0 { start | stop | restart}"
+   exit 1
+
+esac
+exit 0
