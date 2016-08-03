@@ -1,21 +1,27 @@
 #!/bin/sh
 #
 #
-# Description: Brings the bitcoin daemon up and down at boot 
+# Description:      Brings the bitcoin daemon up and down at boot 
 # Default-Start:    Defaults 
 # Default-Stop:     Defaults
+#
+# written by Wesley Hinds <wesley.hinds@swri.org>
 
+# Set to where you want your .bitcoin/ data to be stored 
 HOME=/
+# Add path to bitcoind/bitcoin-cli executables. IE /usr/local/bin
+PATH=/usr/local/bin:/bin
+# Config file
+BTC_CONFIG_FILE=/etc/bitcoin.conf
+
 
 case "$1" in
-'start') 
-
-   [ -f /usr/local/bin/bitcoind ] &&
-            /usr/local/bin/bitcoind -daemon 
+'start')
+      bitcoind -daemon -conf=$BTC_CONFIG_FILE
    ;;
 
-'stop') 
-            /usr/local/bin/bitcoin-cli stop
+'stop')
+      bitcoin-cli -conf=$BTC_CONFIG_FILE stop
    ;;
 
 'restart') echo "Restarting bitcoind....."

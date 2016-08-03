@@ -3,7 +3,7 @@ A couple of scripts that are essential when running your own bitcoind instance.
 
 bitcoin:
 Typical shell script to be put in /etc/init.d to
-start/stop bitcoind service. Valid as of Bitcoin Core v0.11.1
+start/stop bitcoind service. Valid as of Bitcoin Core v0.12.1
 
 
 check-bitcoin-service.pl:
