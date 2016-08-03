@@ -1,6 +1,6 @@
 #!/usr/bin/perl 
 #
-# Filename:
+# Filename:    check-bitcoin-service.pl 
 #
 # Description: This script runs periodically to check if bitcoind is still running, if not 
 #              it starts the service. bitcoind has a number of problems one of which is a memory leak
@@ -11,8 +11,6 @@
 
 $result = `pidof bitcoind`;
 chop($result);
-
-print $result;
 
 if ($result > 0) {
    # If process has PID do nothing
